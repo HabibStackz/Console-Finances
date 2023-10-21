@@ -142,3 +142,27 @@ for (i = 1; i < finances.length; i++){
 }
 
 console.log("Greatest increase in Profits/Losses: ", maxIncreaseDate, "$" + maxIncreaseAmount);
+
+// The greatest decrease in Profit/Losses (date and amount) over the entire period.
+
+var maxDecrease = Infinity;
+var maxDecreaseDate = "";
+var maxDecreaseAmount = 0;
+
+for(i=1; i<finances.length; i++){
+  var currentMonth = finances[i];
+  var previousMonth = finances[i-1];
+
+  var currentProfit = currentMonth[1];
+  var previousProfit = previousMonth[1];
+
+  var decrease = currentProfit - previousProfit;
+
+  if (decrease < maxDecrease) {
+    maxDecrease = decrease;
+    maxDecreaseDate = currentMonth[0];
+    maxDecreaseAmount = decrease;
+  }
+}
+
+console.log("Greatest decrease in Profits/Losses: ", maxDecreaseDate, "$" + maxDecreaseAmount);
