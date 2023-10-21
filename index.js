@@ -117,3 +117,28 @@ for(var i=1; i < finances.length; i++){
 var averageChange = totalChange / changeCount;
 
 console.log("Average Change: " + averageChange.toFixed(2)); // printed to the nearest 100th
+
+// The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+var maxIncrease = -Infinity;
+var maxIncreaseDate = "";
+var maxIncreaseAmount = 0;
+
+for (i = 1; i < finances.length; i++){
+  var currentMonth = finances[i];
+  var previousMonth = finances[i-1];
+
+  var currentProfit = currentMonth[1];
+  var previousProfit = previousMonth[1];
+
+  var increase = currentProfit - previousProfit;
+
+  if (increase > maxIncrease) {
+    maxIncrease = increase;
+    maxIncreaseDate = currentMonth[0];
+    maxIncreaseAmount = increase;
+}
+
+}
+
+console.log("Greatest increase in Profits/Losses: ", maxIncreaseDate, "$" + maxIncreaseAmount);
