@@ -116,4 +116,4 @@ for(var i=1; i < finances.length; i++){
 
 var averageChange = totalChange / changeCount;
 
-console.log("Average Change: " + averageChange.toFixed(2)); // printing to the nearest 100th
+console.log("Average Change: " + averageChange.toFixed(2)); // printed to the nearest 100th
