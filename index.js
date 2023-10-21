@@ -92,11 +92,28 @@ console.log("Financial Analysis")
 console.log("---------------------------")
 
 // The total number of months included int the dataset
-console.log( "Total Months: " + finances.length);
+var totalMonths = finances.length
+console.log( "Total Months: " + totalMonths);
 
 // The net total amount of Profit/Losses over the entire period.
-var netTotal = finances.reduce((total, item) => {
-  return total + item[1];
-}, 0);
 
+const netTotal = finances.reduce((acc, cur) => acc + cur[1], 0)
 console.log("TOTAL: $" + netTotal);
+
+// The average of the changes in Profit/Losses over the entire period.
+
+var totalChange = 0;
+var changeCount = 0;
+
+for(var i=1; i < finances.length; i++){
+  var currentMonth = finances[i][1];
+  var previousMonth = finances[i-1][1];
+  var change = currentMonth - previousMonth;
+
+  totalChange += change;
+  changeCount++;
+}
+
+var averageChange = totalChange / changeCount;
+
+console.log("Average Change: " + averageChange.toFixed(2)); // printing to the nearest 100th
